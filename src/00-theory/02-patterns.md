@@ -1,1 +1,3 @@
 # Patterns
+
+[//]: # (TODO: naming conventions)
