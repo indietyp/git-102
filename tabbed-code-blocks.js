@@ -12,15 +12,15 @@ const class_active = "active";
 // NOTE: the order in which we define the names is important, because we
 // iterate over the names in the *insertion order*.
 const tab_names = new Map();
-tab_names.set("language-python", "Python");
-tab_names.set("language-py", "Python");
-tab_names.set("language-R", "R");
-tab_names.set("language-cpp", "C++");
-tab_names.set("language-sh", "Shell");
-tab_names.set("language-shell", "Shell");
-tab_names.set("language-md", "Markdown");
-tab_names.set("language-text", "Text");
-tab_names.set("language-diff", "Diff");
+tab_names.set("macos", "Mac OS");
+tab_names.set("debian", "Debian");
+tab_names.set("centos", "Cent-OS");
+
+tab_names.set("vim", "vim");
+tab_names.set("neovim", "neovim");
+tab_names.set("nano", "nano");
+tab_names.set("emacs", "emacs");
+tab_names.set("code", "Visual Studio Code");
 
 // The tab name to use when none of the above names apply.
 const default_tab_name = "Unknown";

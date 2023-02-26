@@ -18,4 +18,4 @@ assets_version = "2.0.0" # do not edit: managed by `mdbook-admonish install`
 
 [output.html]
 additional-js = ["mermaid.min.js", "mermaid-init.js", "tabbed-code-blocks.js"]
-additional-css = ["././mdbook-admonish.css", "tabbled-code-blocks.css"]
+additional-css = ["././mdbook-admonish.css", "tabbed-code-blocks.css"]
