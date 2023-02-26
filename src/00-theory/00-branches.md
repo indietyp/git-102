@@ -146,6 +146,7 @@ Alice **then** commits a new change onto the `dev` branch called "create example
 Bob **then** adds a commit to his branch titled: "add color to main.py".
 
 How does the resulting graph look like?
+
 ```
 
 
