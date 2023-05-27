@@ -22,3 +22,7 @@
 * **DAG**: A directed acyclic graph
 * **VCS**: Version control system
 * **Repository**: A collection of commits
+* **Submodule**: A repository inside another repository
+* **Subtree**: A directory inside another repository
+* **Bare Repository**: A repository without a working directory
+* **Working Tree**: A working directory with a repository
