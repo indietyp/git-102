@@ -1,53 +1,181 @@
 # Branches
 
-Branches are a way to organize simultaneous work in the same repository. Branches are just pointers into the DAG we have
-explored earlier, but in contrast to tags always point to a leaf and are automatically advanced.
+Branches are a way to create a new line of development, they are pointers to a specific commit in the commit history.
+Branches are refs that are automatically advanced to the latest commit in the branch. They are often used to separate
+different features/areas of work that are unrelated to each other.
 
-Branches are often used to separate different features/areas of work that are unrelated to each other.
+You can switch between branches at any time, this will change the state of your working directory to the state of the
+branch you switched to. You can easily do this with the `git switch` command.
 
-```admonish example
+Branches are isolated from each other, this means that you can work on different features in parallel without needing to
+interfere with each other.
 
-You are part of a software project and want to develop a new feature called `x`, 
-you start a new branch called `feature/x` and develop there.
+There is always a default branch called `main`, this is the branch that is checked out when you clone a repository. This
+branch is often used to represent the current state of the project, it is also often used to create releases. Services
+like GitLab and GitHub allow you to protect this branch, this means that you can only merge changes into this branch if
+a certain set of criteria is met, e.g. all tests must pass.
 
-Meanwhile a critical bug has been detected, but the new feature `x` isn't ready yet. 
-You can now branch of `main` with a new branch: `fix/critical-bug`, fix the bug, and merge it into `main`, 
-without needing to deploy the unfinished (and broken) feature you are working on.
+## Task
 
-```
+1. Clone our example repository:
 
-Branches are also used to enable simultanous collaborative work on different features, without needing to interfere with
-one another.
+   ```bash
+    git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+   ```
 
-## Graphs and Pointers
+2. Create a new branch called `<name>/branches` where `<name>` is your name, e.g. `alice/branches`
 
-The previous chapter talked about how we can visualize the whole commit history of snapshots as a graph, branches are
-pointers into that graph.
+   ```bash
+    git switch -c <name>/branches
+   ```
 
-## Divergent History
+3. How does the commit history look like? What can you spot?
 
-When we create a new branch we "point" to the same commit we currently look at (`HEAD`). Only once we commit a change we
-create a diverging history and our "pointer" (branch) moves forward, while the original branch we branched out from does
-not. The changes between those branches are isolated from each other and you are able to freely switch between them.
+   ```bash
+    git log --oneline --graph --all
+   ```
 
-```mermaid
-gitGraph
-    commit
-    commit
-    branch dev
-    commit
-    commit
-    checkout main
-    commit
-    commit
-    checkout dev
-    commit
+4. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt`
 
-```
+   ```bash
+    echo "Hello World" > <name>.txt
+   ```
 
-[//]: # (TODO: example where we first create a new branch - pointer)
+5. Commit your changes
 
-[//]: # (TODO: then we create a divergent history)
+   ```bash
+    git add <name>.txt
+    git commit -m "add <name>.txt"
+   ```
+
+6. How does the commit history look like?
+
+   ```bash
+    git log --oneline --graph --all
+   ```
+
+7. Edit the file `<name>.txt` and add one of your hobbies. (If you feel uncomfortable sharing this information, you can
+   also add a random word) and commit the file.
+
+   ```bash
+    git add <name>.txt
+    git commit -m "add hobby to <name>.txt"
+   ```
+
+8. How does the commit history look like?
+
+   ```bash
+    git log --oneline --graph --all
+   ```
+
+   As you can see, the commit history of the `main` branch and your branch are different from each other and your branch
+   automatically moved forward.
+
+9. Switch back to the `main` branch
+
+   ```bash
+    git switch main
+   ```
+
+10. Push your changes to the remote repository
+
+    ```bash
+     git push origin <name>/branches
+    ```
+
+11. Wait for everyone to finish the task
+
+12. Fetch the changes from the remote repository
+
+    ```bash
+     git fetch origin
+    ```
+
+13. How does the commit history look like?
+
+    ```bash
+     git log --oneline --graph --all
+    ```
+
+## Divergent Histories
+
+What we just created is called a **divergent history**, this means that we created a new branch and committed a change
+to it. The commit history of the `main` branch, your branch (`<name>/branches`) and the branch of the other participants
+are now different from each other.
+
+### Example
+
+![](../assets/screenshot.2023-05-27T15-56-43.png)
+
+## Branching Strategies
+
+There are many different branching strategies, the most common ones are:
+
+- [Feature Branching](#feature-branching)
+- [Gitflow](#gitflow)
+- [Trunk Based Development](#trunk-based-development)
+- [Gitlab Flow](#gitlab-flow)
+- [Github Flow](#github-flow)
+
+### Feature Branching
+
+Feature branching is a branching strategy where you create a new branch for every feature you want to implement. This is
+a very common branching strategy and is used by many projects. The main advantage of this strategy is that you can work
+on different features in parallel without needing to interfere with each other. The main disadvantage is that you need
+to merge your changes back into the main branch, this can be a tedious task if you have many branches.
+
+This also had the added benefit that you can easily see which features are currently being worked on and which features
+are already finished, still missing or abandoned.
+
+Due to the very nature of this strategy, the main branch is always in a working state.
+
+### Gitflow
+
+Gitflow is a branching strategy that is based on feature branching. It is a very common branching strategy and is used
+by many projects, but has a significant overhead for small projects. The trend is to use simpler branching strategies,
+like the aforementioned feature branching.
+
+Gitflow is based on two main branches:
+
+* `main` - This branch represents the current state of the project, it is often used to create releases.
+* `develop` - This branch represents the current state of the development, it is often used to create releases.
+
+Feature branches are branched off from the `develop` branch and merged back into the `develop` branch once they are
+done.
+
+When a release is ready, a new branch called `release/<version>` is created from the `develop` branch. This branch is
+used to fix bugs and prepare the release, no new features are added in this branch. The `develop` branch now enters a
+new development cycle and new features are added to it.
+Once the release is ready, it is merged into the `main` branch and tagged with the version number. It is also merged
+back into the `develop` branch.
+
+This strategy is so popular that there are many tools that help you to automate this process.
+
+### Trunk Based Development
+
+Trunk Based Development is a branching strategy where you only have one branch, the `main` branch. This branch
+represents the current state of the project. This strategy is very simple, but breaks down for larger projects. The main
+advantage of this strategy is that you don't need to merge your changes back into the main branch, this can be a tedious
+task if you have many branches.
+
+### Gitlab Flow
+
+GitLab flow is a simpler alternative to Gitflow. It is based on feature branching, but only has one main branch.
+
+Feature branches are branched off from the `main` branch and merged back into the `main` branch once they are done,
+there are additional branches for `production` and `stable`.
+
+Essentially teams practice feature branching, and once a release is ready it is merged into the `production` branch and
+released. These branches can also be numbered, by the version number of the release. This enables bug fixes of existing
+releases.
+
+### Github Flow
+
+Github flow is a simpler alternative to Gitflow. It is based on feature branching, but only has one main branch.
+
+It is very similar to Gitlab flow, but it doesn't have a `production` branch. Instead, releases are created from
+the `main` branch and tagged with the version number. Features are only merged through pull requests, which enables code
+reviews.
 
 ### Merging Divergent Histories
 
@@ -55,101 +183,23 @@ Once you have developed your features/requirements you likely want to merge thes
 the concept of **merging** comes into play. Conceptually merging takes the state of the target branch and the current
 branch and merges them together, changes of the target branch are applied to the current branch, resulting in a new
 commit, unifying both branches, if both branches touched the same section of code conflict resolution must take place,
-the chapter [merge] goes into greater detail, but of the time these can be applied automatically.
+the chapter [merge](../01-actions/01-merge.md) goes into greater detail, but of the time these can be applied
+automatically.
 
+## Trivia
 
-## Example
-
-[//]: # (TODO: mermaid breaks down here)
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-```
-
-1. Alice creates a new branch: `dev`
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-    branch dev
-```
-
-2. Alice creates a new commit on branch dev: "finish main.py script"
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-    branch dev
-    commit id: "finish main.py script"
-```
-
-3. Alice switches over to the main branch to adjust the readme
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-    branch dev
-    commit id: "finish main.py script"
-    checkout main
-    commit id: "adjust readme"
-```
-
-4. Alice wants to merge the changes done in dev into main
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-    branch dev
-    commit id: "finish main.py script"
-    checkout main
-    commit id: "adjust readme"
-    merge dev
-```
-
-5. Alice continues development and creates a `learn.py` script in the `dev` branch
-
-```mermaid
-gitGraph
-    commit id: "init repository"
-    commit id: "write down setup instructions"
-    commit id: "start setup script"
-    commit id: "create main.py script"
-    branch dev
-    commit id: "finish main.py script"
-    checkout main
-    commit id: "adjust readme"
-    merge dev
-    checkout dev
-    commit id: "start learn.py script"
-```
-
-```admonish info title="Task"
-
-Bob now wants to create a new feature, based on the `dev` branch called `feature/fancy`, 
-Alice **then** commits a new change onto the `dev` branch called "create example", 
-Bob **then** adds a commit to his branch titled: "add color to main.py".
-
-How does the resulting graph look like?
-
-```
-
+* The name of the default branch `main` is a reference to the `master` branch, which was the default branch name for a
+  long time.
+* The `master` branch is still used in many projects, but it is slowly being replaced by `main`.
+* Nowadays the default branch name is configurable, but `main` is the most common one. Some other common names
+  are `develop` and `trunk`.
 
 ## Resources
 
 - [Git Documentation](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+- [Atlassian Git Tutorial](https://www.atlassian.com/git/tutorials/using-branches)
+- [Git Branching Strategies](https://www.atlassian.com/git/tutorials/comparing-workflows)
+- [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+- [Trunk Based Development](https://trunkbaseddevelopment.com/)
+- [Gitlab Flow](https://about.gitlab.com/topics/version-control/what-is-gitlab-flow/)
+- [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
