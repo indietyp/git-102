@@ -144,3 +144,9 @@ git switch -c <name>/tags main
     ```bash
     git log --oneline --graph --all
     ```
+
+## Resources
+
+* [Git Tag Documentation](https://git-scm.com/docs/git-tag)
+* [Semantic Versioning](https://semver.org/)
+* [Git Tag Tutorial](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)

@@ -137,3 +137,12 @@ this:
 7. Bob finishes `feature-b` and merges it into the main branch.
 8. Alice deletes the `feature-a` branch.
 9. Bob deletes the `feature-b` branch.
+
+## Resources
+
+* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
+* [A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+* [Semantic Commit Messages](https://seesparkbox.com/foundry/semantic_commit_messages)
+* [Commit Message Guidelines](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53)
+* [Commit Message Format](https://git-scm.com/docs/git-commit#_discussion)

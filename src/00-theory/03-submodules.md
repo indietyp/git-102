@@ -113,3 +113,8 @@ As you can see the commit history of the parent repository does not change when 
 because the submodule is a pointer to a specific commit in the submodule repository. If you want to update the submodule
 pointer to a newer commit, you have to do this manually. Changes in the submodule repository will not show up in the
 log.
+
+## Resources
+
+- [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+- [Git Submodules: Adding, Using, Removing, Updating](https://chrisjean.com/git-submodules-adding-using-removing-and-updating/)

@@ -95,3 +95,8 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
     ```
 
 8. Look at the commit history of your fork on GitLab. Did something change?
+
+## Resources
+
+- [Git documentation: git-remote](https://git-scm.com/docs/git-remote)
+- [Git documentation: git-push](https://git-scm.com/docs/git-push)
