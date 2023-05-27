@@ -1,0 +1,11 @@
+code.reveal {
+    filter: blur(8px);
+}
+
+code.reveal:hover {
+    filter: blur(0);
+}
+
+code.reveal.active {
+    filter: blur(0);
+}

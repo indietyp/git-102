@@ -39,47 +39,47 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 1. Create a new branch called `<name>/branches` where `<name>` is your name, e.g. `alice/branches`
 
-    ```bash
-    git switch -c <name>/branches
-    ```
+   ```bash,reveal
+   git switch -c <name>/branches
+   ```
 
 2. How does the commit history look like? What can you spot?
 
-   ```bash
+   ```bash,reveal
    git log --oneline --graph --all
    ```
 
 3. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt` and add the text `Hello World` to
    it.
 
-   ```bash
+   ```bash,reveal
    echo "Hello World" > <name>.txt
    ```
 
 4. Commit your changes
 
-   ```bash
+   ```bash,reveal
    git add <name>.txt
    git commit -m "add <name>.txt"
    ```
 
 5. How does the commit history look like?
 
-   ```bash
+   ```bash,reveal
    git log --oneline --graph --all
    ```
 
 6. Edit the file `<name>.txt` and add one of your hobbies. (If you feel uncomfortable sharing this information, you can
    also add a random word) and commit the file.
 
-   ```bash
+   ```bash,reveal
    git add <name>.txt
    git commit -m "add hobby to <name>.txt"
    ```
 
 7. How does the commit history look like?
 
-   ```bash
+   ```bash,reveal
    git log --oneline --graph --all
    ```
 
@@ -88,13 +88,13 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 8. Switch back to the `main` branch
 
-   ```bash
+   ```bash,reveal
    git switch main
    ```
 
 9. Push your changes to the remote repository
 
-   ```bash
+   ```bash,reveal
    git push origin <name>/branches
    ```
 
@@ -102,13 +102,13 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 11. Fetch the changes from the remote repository
 
-    ```bash
+    ```bash,reveal
     git fetch origin
     ```
 
 12. How does the commit history look like?
 
-    ```bash
+    ```bash,reveal
     git log --oneline --graph --all
     ```
 
