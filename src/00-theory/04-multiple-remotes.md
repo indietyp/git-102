@@ -61,7 +61,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 1. Create a new branch `<name>/multiple-remotes` and push the branch to the remote repository.
 
-    ```bash
+    ```bash,reveal
     git switch -c <name>/multiple-remotes
     git push -u origin <name>/multiple-remotes
     ```
@@ -69,7 +69,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 2. Fork the repository `git-102-sandbox` on GitLab. Add the fork as a remote to your repository. The name of the remote
    should be `fork`. Push your changes to the fork.
 
-    ```bash
+    ```bash,reveal
     git remote add fork <url>
     git push fork main
     ```
@@ -77,7 +77,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 3. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file and push the
    branch to the remote repository.
 
-    ```bash
+    ```bash,reveal
     git add <name>.txt
     git commit -m "Add <name>.txt"
     git push
@@ -90,7 +90,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 7. Push your changes to the `fork` remote.
 
-    ```bash
+    ```bash,reveal
     git push fork <name>/multiple-remotes
     ```
 

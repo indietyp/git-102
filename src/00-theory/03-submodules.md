@@ -69,14 +69,14 @@ repository and commit the changes.
 1. Add the repository `git-102-sandbox` as a submodule to your repository. The path should be `git-102-sandbox`.
    Commit the changes.
 
-   ```bash
+   ```bash,reveal
    git submodule add https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git git-102-sandbox
    ```
 
 2. Check out your branch `<name>/tags` (or `<name>/branches`) from the remote repository. You can use the `git switch`
    command.
 
-   ```bash
+   ```bash,reveal
     cd git-102-sandbox
     git switch -c <name>/tags origin/<name>/tags
     cd ..
@@ -84,13 +84,13 @@ repository and commit the changes.
 
 3. How does the commit history look like?
 
-    ```bash
-     git log --oneline --graph --all
+    ```bash,reveal
+    git log --oneline --graph --all
     ```
 
 4. Update the submodule to the most recent commit.
 
-    ```bash
+    ```bash,reveal
     cd git-102-sandbox
     git pull
     cd ..
@@ -98,15 +98,15 @@ repository and commit the changes.
 
 5. Update the submodule pointer in the parent repository and commit the changes.
 
-    ```bash
+    ```bash,reveal
     git add git-102-sandbox
     git commit -m "Update submodule"
     ```
 
 6. How does the commit history look like now?
 
-    ```bash
-     git log --oneline --graph --all
+    ```bash,reveal
+    git log --oneline --graph --all
     ```
 
 As you can see the commit history of the parent repository does not change when you update the submodule. This is

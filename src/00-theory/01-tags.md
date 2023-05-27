@@ -85,47 +85,47 @@ git switch -c <name>/tags main
 
 2. How does the commit history look like?
 
-   ```bash
-    git log --oneline --graph --all
+   ```bash,reveal
+   git log --oneline --graph --all
    ```
 
 3. Create a new tag `<name>@v0.1.0` on the most recent commit.
 
-   ```bash
+   ```bash,reveal
    git tag <name>@v0.1.0
    ```
    
 4. How does the commit history look like now?
 
-   ```bash
-    git log --oneline --graph --all
+   ```bash,reveal
+   git log --oneline --graph --all
    ```
    
 5. Modify the file `<name>.txt` and commit the changes.
 
 6. How does the commit history look like now?
 
-   ```bash
-    git log --oneline --graph --all
+   ```bash,reveal
+   git log --oneline --graph --all
    ```
    
 7. Push your changes to the remote repository.
 
-   ```bash
+   ```bash,reveal
    git push origin <name>/tags
    ```
    
 8. How does the commit history look like now?
 
-   ```bash
-    git log --oneline --graph --all
+   ```bash,reveal
+   git log --oneline --graph --all
    ```
    
 9. Inspect the remote repository on GitLab. How does the commit history look like? Do you spot something odd?
 
 10. Tags are not pushed to the remote repository by default. Push the tag to the remote repository.
 
-    ```bash
+    ```bash,reveal
     git push origin <name>@v0.1.0
     ```
     
@@ -135,13 +135,13 @@ git switch -c <name>/tags main
 
 13. Fetch all changes from the remote repository.
 
-    ```bash
+    ```bash,reveal
     git fetch
     ```
     
 14. How does the commit history look like now?
 
-    ```bash
+    ```bash,reveal
     git log --oneline --graph --all
     ```
 
