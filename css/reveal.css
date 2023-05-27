@@ -9,3 +9,9 @@ code.reveal:hover {
 code.reveal.active {
     filter: blur(0);
 }
+
+@media print {
+    code.reveal {
+        filter: blur(0);
+    }
+}
