@@ -15,88 +15,6 @@ branch is often used to represent the current state of the project, it is also o
 like GitLab and GitHub allow you to protect this branch, this means that you can only merge changes into this branch if
 a certain set of criteria is met, e.g. all tests must pass.
 
-## Task
-
-1. Clone our example repository:
-
-   ```bash
-    git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
-   ```
-
-2. Create a new branch called `<name>/branches` where `<name>` is your name, e.g. `alice/branches`
-
-   ```bash
-    git switch -c <name>/branches
-   ```
-
-3. How does the commit history look like? What can you spot?
-
-   ```bash
-    git log --oneline --graph --all
-   ```
-
-4. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt`
-
-   ```bash
-    echo "Hello World" > <name>.txt
-   ```
-
-5. Commit your changes
-
-   ```bash
-    git add <name>.txt
-    git commit -m "add <name>.txt"
-   ```
-
-6. How does the commit history look like?
-
-   ```bash
-    git log --oneline --graph --all
-   ```
-
-7. Edit the file `<name>.txt` and add one of your hobbies. (If you feel uncomfortable sharing this information, you can
-   also add a random word) and commit the file.
-
-   ```bash
-    git add <name>.txt
-    git commit -m "add hobby to <name>.txt"
-   ```
-
-8. How does the commit history look like?
-
-   ```bash
-    git log --oneline --graph --all
-   ```
-
-   As you can see, the commit history of the `main` branch and your branch are different from each other and your branch
-   automatically moved forward.
-
-9. Switch back to the `main` branch
-
-   ```bash
-    git switch main
-   ```
-
-10. Push your changes to the remote repository
-
-    ```bash
-     git push origin <name>/branches
-    ```
-
-11. Wait for everyone to finish the task
-
-12. Fetch the changes from the remote repository
-
-    ```bash
-     git fetch origin
-    ```
-
-13. How does the commit history look like?
-
-    ```bash
-     git log --oneline --graph --all
-    ```
-
 ## Divergent Histories
 
 What we just created is called a **divergent history**, this means that we created a new branch and committed a change
@@ -106,6 +24,94 @@ are now different from each other.
 ### Example
 
 ![](../assets/screenshot.2023-05-27T15-56-43.png)
+
+
+## Exercise
+
+### Setup
+
+Clone our example repository:
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+### Tasks
+
+1. Create a new branch called `<name>/branches` where `<name>` is your name, e.g. `alice/branches`
+
+   ```bash
+    git switch -c <name>/branches
+   ```
+
+2. How does the commit history look like? What can you spot?
+
+   ```bash
+    git log --oneline --graph --all
+   ```
+
+3. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt`
+
+   ```bash
+    echo "Hello World" > <name>.txt
+   ```
+
+4. Commit your changes
+
+   ```bash
+    git add <name>.txt
+    git commit -m "add <name>.txt"
+   ```
+
+5. How does the commit history look like?
+
+   ```bash
+    git log --oneline --graph --all
+   ```
+
+6. Edit the file `<name>.txt` and add one of your hobbies. (If you feel uncomfortable sharing this information, you can
+   also add a random word) and commit the file.
+
+   ```bash
+    git add <name>.txt
+    git commit -m "add hobby to <name>.txt"
+   ```
+
+7. How does the commit history look like?
+
+   ```bash
+    git log --oneline --graph --all
+   ```
+
+   As you can see, the commit history of the `main` branch and your branch are different from each other and your branch
+   automatically moved forward.
+
+8. Switch back to the `main` branch
+
+   ```bash
+    git switch main
+   ```
+
+9. Push your changes to the remote repository
+
+   ```bash
+    git push origin <name>/branches
+   ```
+
+10. Wait for everyone to finish the 10th step
+
+11. Fetch the changes from the remote repository
+
+    ```bash
+     git fetch origin
+    ```
+
+12. How does the commit history look like?
+
+    ```bash
+     git log --oneline --graph --all
+    ```
+
 
 ## Branching Strategies
 
@@ -156,7 +162,7 @@ This strategy is so popular that there are many tools that help you to automate 
 Trunk Based Development is a branching strategy where you only have one branch, the `main` branch. This branch
 represents the current state of the project. This strategy is very simple, but breaks down for larger projects. The main
 advantage of this strategy is that you don't need to merge your changes back into the main branch, this can be a tedious
-task if you have many branches.
+task if you have many branches, but is often used for small projects that are developed by a single person.
 
 ### Gitlab Flow
 
@@ -166,8 +172,7 @@ Feature branches are branched off from the `main` branch and merged back into th
 there are additional branches for `production` and `stable`.
 
 Essentially teams practice feature branching, and once a release is ready it is merged into the `production` branch and
-released. These branches can also be numbered, by the version number of the release. This enables bug fixes of existing
-releases.
+released. A repository can also opt into numbered releases, in this case a new branch is created for every release.
 
 ### Github Flow
 

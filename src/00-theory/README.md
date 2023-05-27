@@ -3,7 +3,7 @@
 `git` is a VCS (version control system) that is based on a DAG (directed acyclic graph) of commits. This chapter will
 explain what that means and how it works.
 
-```admonish info title="Task"
+```admonish info title="Exercise"
 
 For this chapter please create a new empty repository on your local machine and initialize it with `git init`.
 
@@ -38,7 +38,7 @@ file is the SHA-1 hash of the contents of the file.
 
 You can create a blob using `git hash-object -w <file>`. The `-w` flag tells git to write the blob to the repository.
 
-```admonish info collapsible=true title="Task"
+```admonish info collapsible=true title="Exercise"
 
 Create a file `test.txt` with the contents `Hello World!`.
 
@@ -74,7 +74,7 @@ Git uses a technique called deduplication to save space. If you create a blob wi
 will be stored only once in the repository. This is because the name of the blob is the SHA-1 hash of the contents of
 the file. If the contents are the same, the name will be the same and the blob will be stored only once.
 
-```admonish info collapsible=true title="Task"
+```admonish info collapsible=true title="Exercise"
 
 Create a file `test2.txt` with the contents `Hello World!`.
 
@@ -92,7 +92,7 @@ of the tree is the SHA-1 hash of the contents of the tree.
 
 You can create a tree using `git write-tree`.
 
-```admonish info collapsible=true title="Task"
+```admonish info collapsible=true title="Exercise"
 
 Create a directory `test` with a file `greeting.txt` with the contents `How are you?`.
 
@@ -120,7 +120,7 @@ Git uses a technique called deduplication to save space. If you create a tree wi
 will be stored only once in the repository. This is because the name of the tree is the SHA-1 hash of the contents of
 the file. If the contents are the same, the name will be the same and the tree will be stored only once.
 
-```admonish info collapsible=true title="Task"
+```admonish info collapsible=true title="Exercise"
 
 Create a directory `test2` with a file `greeting.txt` with the contents `How are you?`.
 
@@ -158,7 +158,7 @@ affected later commits and the path taken to reach a specific commit.
 `git` has the ability to display the graph using `git log --graph --decorate --oneline`. There are also many other ways
 to display the graph, such as graphical tools like `gitk` or `gitg`.
 
-```admonish info collapsible=true title="Task"
+```admonish info collapsible=true title="Exercise"
 
 Execute `git log --graph --all --decorate --oneline` in your repository of choice.
 
@@ -172,7 +172,7 @@ repository. It is important to understand how it works and how it is stored in t
 The history is especially important when working in a team. It allows you to see what changes have been made and by who.
 git also allows you to have diverging histories, which will be covered in the next chapter.
 
-### Task
+### Exercise
 
 Let's create a more elaborate example to see how the commit history works.
 
