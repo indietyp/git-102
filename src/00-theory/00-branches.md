@@ -25,7 +25,6 @@ are now different from each other.
 
 ![](../assets/screenshot.2023-05-27T15-56-43.png)
 
-
 ## Exercise
 
 ### Setup
@@ -40,47 +39,48 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
 1. Create a new branch called `<name>/branches` where `<name>` is your name, e.g. `alice/branches`
 
-   ```bash
+    ```bash
     git switch -c <name>/branches
-   ```
+    ```
 
 2. How does the commit history look like? What can you spot?
 
    ```bash
-    git log --oneline --graph --all
+   git log --oneline --graph --all
    ```
 
-3. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt`
+3. Create a new file called `<name>.txt` where `<name>` is your name, e.g. `alice.txt` and add the text `Hello World` to
+   it.
 
    ```bash
-    echo "Hello World" > <name>.txt
+   echo "Hello World" > <name>.txt
    ```
 
 4. Commit your changes
 
    ```bash
-    git add <name>.txt
-    git commit -m "add <name>.txt"
+   git add <name>.txt
+   git commit -m "add <name>.txt"
    ```
 
 5. How does the commit history look like?
 
    ```bash
-    git log --oneline --graph --all
+   git log --oneline --graph --all
    ```
 
 6. Edit the file `<name>.txt` and add one of your hobbies. (If you feel uncomfortable sharing this information, you can
    also add a random word) and commit the file.
 
    ```bash
-    git add <name>.txt
-    git commit -m "add hobby to <name>.txt"
+   git add <name>.txt
+   git commit -m "add hobby to <name>.txt"
    ```
 
 7. How does the commit history look like?
 
    ```bash
-    git log --oneline --graph --all
+   git log --oneline --graph --all
    ```
 
    As you can see, the commit history of the `main` branch and your branch are different from each other and your branch
@@ -89,13 +89,13 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 8. Switch back to the `main` branch
 
    ```bash
-    git switch main
+   git switch main
    ```
 
 9. Push your changes to the remote repository
 
    ```bash
-    git push origin <name>/branches
+   git push origin <name>/branches
    ```
 
 10. Wait for everyone to finish the 10th step
@@ -103,15 +103,14 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 11. Fetch the changes from the remote repository
 
     ```bash
-     git fetch origin
+    git fetch origin
     ```
 
 12. How does the commit history look like?
 
     ```bash
-     git log --oneline --graph --all
+    git log --oneline --graph --all
     ```
-
 
 ## Branching Strategies
 
