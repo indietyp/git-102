@@ -31,11 +31,11 @@ git remote rename <old-name> <new-name>
 
 ## Changing the default remote
 
-You can change the default remote with the `git remote set-head` command. The command takes two arguments, the name of
+You can change the default remote with the `git push -u` command. The command takes two arguments, the name of
 the remote and the name of the branch.
 
 ```bash
-git remote set-head <remote> <branch>
+git push -u <name> <branch>
 ```
 
 ## Listing remotes
