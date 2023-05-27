@@ -194,7 +194,7 @@ automatically.
 ## Trivia
 
 * The name of the default branch `main` is a reference to the `master` branch, which was the default branch name for a
-  long time.
+  long time, but has been replaced by `main` due to its racist connotations.
 * The `master` branch is still used in many projects, but it is slowly being replaced by `main`.
 * Nowadays the default branch name is configurable, but `main` is the most common one. Some other common names
   are `develop` and `trunk`.
