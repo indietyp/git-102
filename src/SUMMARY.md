@@ -2,7 +2,7 @@
 
 [Setup](setup.md)
 
-- [Theory](./00-theory/README.md)
+- [Demystifying Git](./00-theory/README.md)
   - [Branches](./00-theory/00-branches.md) 
   - [Tags](./00-theory/01-tags.md)
   - [Patterns](./00-theory/02-patterns.md)
