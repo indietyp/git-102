@@ -285,7 +285,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
    If you haven't found out already, the bug was introduced in commit 95f9f2e118072, 
    and is located on line 23.
 
-   It should've been `for _ in range(2, n):` instead of `for _ in range(2, n + 1):`.
+   It should've been `for _ in range(2, n):` instead of `for _ in range(1, n):`.
    </div>
 
    ```bash,reveal
