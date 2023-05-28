@@ -49,3 +49,12 @@ This means that you can not use GPL libraries in proprietary software.
 Libraries in programming languages often have a license that is compatible with the license of the programming language.
 For example, the [Rust programming language](https://www.rust-lang.org/) is dual-licensed under the MIT License and the
 Apache License. Most libraries are also dual-licensed.
+
+## References
+
+* [Choose a License](https://choosealicense.com/)
+* [Open Source Initiative](https://opensource.org/)
+* [Creative Commons](https://creativecommons.org/)
+* [Open Source Definition](https://opensource.org/osd)
+* [Open Source Licenses](https://opensource.org/licenses/alphabetical)
+* [GNU Licenses](https://www.gnu.org/licenses/license-list.en.html)
