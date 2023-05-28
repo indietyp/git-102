@@ -281,15 +281,77 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
    (The blurred out text is the solution to the `git bisect` exercise. You need to click on it to reveal it.)
 
-    <div class="reveal no-hover">
-    If you haven't found out already, the bug was introduced in commit 95f9f2e118072, 
-    and is located on line 23.
+   <div class="reveal no-hover">
+   If you haven't found out already, the bug was introduced in commit 95f9f2e118072, 
+   and is located on line 23.
 
    It should've been `for _ in range(2, n):` instead of `for _ in range(2, n + 1):`.
-    </div>
+   </div>
 
-    ```bash,reveal
-    git blame lib/fibonacci.py
-    ```
+   ```bash,reveal
+   git blame lib/fibonacci.py
+   ```
 
 3. Who introduced the bug in the `fibonacci` function in `lib/fibonacci.py`?
+
+## `git diff`
+
+`git diff` is a command that is used to show the difference between two commits. This command is useful if we want to
+see what has changed between two commits. This command is also useful if we want to see what has changed in a specific
+commit.
+
+```bash
+git diff <commit> <commit>
+```
+
+You can also specify which files you want to show the difference for. This is useful if you only want to see the changes
+in a specific file.
+
+```bash
+git diff <commit> <commit> <file>
+```
+
+Common options for `git diff` are:
+
+* `--cached` - Show the difference between the working directory and the staging area.
+* `--staged` - Show the difference between the staging area and the repository.
+* `--word-diff` - Show the difference word by word instead of line by line.
+* `--color-words` - Show the difference word by word with colors.
+
+There is also `git range-diff` which is similar to `git diff` but shows the difference between two ranges of commits.
+This command is not commonly used, which is why it is not covered in the exercises.
+
+```bash
+git range-diff <ref>..<ref> <ref>..<ref>
+```
+
+`git range-diff` is especially useful if you want to see the difference between two branches when merging them, as it
+allows us to see the difference between the commits that are going to be merged. This will be further explained in the
+dedicated section on merging.
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+#### Tasks
+
+1. Create a new branch `<name>/diff` and check it out.
+
+   ```bash,reveal
+   git checkout -b <name>/diff main
+   ```
+
+2. Find out what has changed in the `fibonacci` function in `lib/fibonacci.py` between the commits `6b6c79` and
+   `55dd3b9`.
+
+   ```bash,reveal
+   git diff 6b6c79 55dd3b9 lib/fibonacci.py
+   ```
+
+3. What did you find out?
