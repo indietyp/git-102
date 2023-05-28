@@ -313,8 +313,7 @@ git diff <commit> <commit> <file>
 
 Common options for `git diff` are:
 
-* `--cached` - Show the difference between the working directory and the staging area.
-* `--staged` - Show the difference between the staging area and the repository.
+* `--cached` or `--staged` - Show the difference between the working directory and the staging area.
 * `--word-diff` - Show the difference word by word instead of line by line.
 * `--color-words` - Show the difference word by word with colors.
 
