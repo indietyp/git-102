@@ -217,9 +217,9 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 3. Fix the bug. You can use the `git bisect` command to find the commit that introduced the bug. Either use the long
    way or the short way.
 
-   * Hint: You can use the command `python3 lib/fibonacci.py` to run the tests.
-   * Hint: The first commit in the repository is `36710e768`, if you do not know where to start.
-   * Hint: If you leave out revision of `git bisect bad`, it will use the current commit.
+    * Hint: You can use the command `python3 lib/fibonacci.py` to run the tests.
+    * Hint: The first commit in the repository is `36710e768`, if you do not know where to start.
+    * Hint: If you leave out revision of `git bisect bad`, it will use the current commit.
 
    ```bash,reveal
    git bisect start
@@ -235,3 +235,61 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
     git commit -m "Fix fibonacci function"
     ```
 
+## `git blame`
+
+`git blame` is a command that is used to find the commit that introduced a specific line of code. This command is useful
+if we want to know why a specific line of code was added or who added it. This command is also useful if we want to know
+if a specific line of code was changed in a specific commit.
+
+While `blame` has a negative connotation, don't be afraid to use this command. It is a useful tool to find out why a bug
+was introduced, not to blame someone for introducing a bug. Bugs are a natural part of software development and we all
+make mistakes.
+
+```bash
+git blame <file>
+```
+
+You can also specify which revision of the file you want to blame. This is useful if you want to know if a specific line
+of code was changed in a specific commit.
+
+Common options for `git blame` are:
+
+* `-L <start>,<end>` - Only show the lines between `<start>` and `<end>`.
+* `-C` - Detect lines that were copied from another file.
+* `-M` - Detect lines that were moved from another file.
+* `-L <line>` - Only show the line `<line>`.
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+#### Tasks
+
+1. Create a new branch `<name>/blame` and check it out.
+
+    ```bash,reveal
+    git checkout -b <name>/blame main
+    ```
+
+2. Find out who introduced the bug in the `fibonacci` function in `lib/fibonacci.py`.
+
+   (The blurred out text is the solution to the `git bisect` exercise. You need to click on it to reveal it.)
+
+    <div class="reveal no-hover">
+    If you haven't found out already, the bug was introduced in commit 95f9f2e118072, 
+    and is located on line 23.
+
+   It should've been `for _ in range(2, n):` instead of `for _ in range(2, n + 1):`.
+    </div>
+
+    ```bash,reveal
+    git blame lib/fibonacci.py
+    ```
+
+3. Who introduced the bug in the `fibonacci` function in `lib/fibonacci.py`?

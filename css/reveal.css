@@ -1,17 +1,17 @@
-code.reveal {
+.reveal {
     filter: blur(8px);
 }
 
-code.reveal:hover {
+.reveal:not(.no-hover):hover {
     filter: blur(0);
 }
 
-code.reveal.active {
+.reveal.active {
     filter: blur(0);
 }
 
 @media print {
-    code.reveal {
+    .reveal {
         filter: blur(0);
     }
 }

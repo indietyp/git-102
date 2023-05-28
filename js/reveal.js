@@ -16,15 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
             reveal[i].classList.toggle('active');
         });
 
-        const revealButton = document.createElement('button');
-        revealButton.classList.add('fa', 'fa-eye', 'reveal-button');
-        revealButton.setAttribute('title', 'Reveal');
-        revealButton.addEventListener('click', function () {
-            reveal[i].classList.toggle('active');
-        });
+        if (reveal[i].nodeName === 'CODE') {
+            const revealButton = document.createElement('button');
+            revealButton.classList.add('fa', 'fa-eye', 'reveal-button');
+            revealButton.setAttribute('title', 'Reveal');
+            revealButton.addEventListener('click', function () {
+                reveal[i].classList.toggle('active');
+            });
 
-        const buttons = reveal[i].previousSibling;
-        buttons.insertBefore(revealButton, buttons.firstChild);
+            const buttons = reveal[i].previousSibling;
+            buttons.insertBefore(revealButton, buttons.firstChild);
+        }
     }
 
     if (reveal.length === 0) {
