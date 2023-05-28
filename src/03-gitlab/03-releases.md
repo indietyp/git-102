@@ -39,3 +39,8 @@ Release should be created on the main branch, and not on feature branches.
    current commit.
 
 3. Checkout the releases page and explore the release you just created.
+
+## References
+
+* [GitLab Documentation: Releases](https://docs.gitlab.com/ee/user/project/releases/)
+* [GitHub Documentation: Releases](https://docs.github.com/en/github/administering-a-repository/about-releases)
