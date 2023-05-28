@@ -1,4 +1,4 @@
-# Actions
+# Commands
 
 There are two types of git commands: **porcelain** and **plumbing**. Porcelain commands are the ones that you use on a
 daily basis, like `git add` or `git commit`. Plumbing commands are the ones that are used to build the porcelain
@@ -117,6 +117,4 @@ Snippet of auxiliary commands:
 * :white_check_mark: [`git remote`](../00-theory/04-multiple-remotes.md) - Manage set of tracked repositories
     * Covered in [`Demystifying Git`](../00-theory/README.md).
 * :white_check_mark: [`git blame`]() - Show what revision and author last modified each line of a file
-    * Covered in this course
-* :white_check_mark: [`git bisect`]() - Use binary search to find the commit that introduced a bug
     * Covered in this course
