@@ -217,8 +217,16 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 3. Fix the bug. You can use the `git bisect` command to find the commit that introduced the bug. Either use the long
    way or the short way.
 
-   // TODO: hint
-   Hint: You can use the command `python3 -m unittest` to run the tests.
+   * Hint: You can use the command `python3 lib/fibonacci.py` to run the tests.
+   * Hint: The first commit in the repository is `36710e768`, if you do not know where to start.
+   * Hint: If you leave out revision of `git bisect bad`, it will use the current commit.
+
+   ```bash,reveal
+   git bisect start
+   git bisect good 36710e768
+   git bisect bad
+   git bisect run python3 lib/fibonacci.py 
+   ```
 
 4. Commit your changes.
 
