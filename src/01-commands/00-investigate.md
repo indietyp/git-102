@@ -41,6 +41,9 @@ If you haven't already, clone the repository from GitLab and go into the reposit
 git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 ```
 
+(Using the sandbox repository is optional, you can also use your own repository, in that case you do not need to create
+a new branch.)
+
 #### Tasks
 
 1. Create a new branch `<name>/grep` and push the branch to the remote repository.
@@ -133,3 +136,94 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
     The file is no longer tracked by git and will not be searched. Remember from the `Git 101` course that an untracked
     file is a file that is not in the repository or has not been added to the staging area.
+
+## `git bisect`
+
+`git bisect` is a command with a multitude of use cases. For example you can use it to find a commit that introduced a
+bug, where a new feature was added or where a performance regression was introduced. This chapter will only cover the
+use case of finding a commit that introduced a bug.
+
+This command is usually used if we do not know which line of code introduced the bug. `bisect` relies on the fact that
+git commits should be small in size and should only contain a single change. If we follow this rule, we can
+easily use `git bisect` to find the commit that introduced the bug.
+
+`git bisect` requires a start and an end commit. The start commit is where we know that the bug is not present and the
+end commit is where we know that the bug is present. `git bisect` will then check out the middle commit between the two
+commits. This command uses binary search, a search algorithm that divides the search space in half with each iteration.
+We then check if the bug is present in the middle commit. If the bug is present, we know that the bug was introduced in
+the first half of the search space. If the bug is not present, we know that the bug was introduced in the second half of
+the search space. We then repeat the process with the half of the search space where the bug was introduced. We repeat
+this process until we find the commit that introduced the bug. While quite efficient, this command is quite tedious to
+use in large repositories. To make this process easier, we can use the `git bisect run` command.
+
+### `git bisect` workflow
+
+#### The long way
+
+1. Initiate the binary search.
+
+    ```bash
+    git bisect start
+    ```
+
+2. Specify the start and end commit.
+
+    ```bash
+    git bisect bad <end commit>
+    git bisect good <start commit>
+    ```
+
+3. bisect will now check out the middle commit between the two commits. Check if the bug is present.
+4. If the bug is present, run `git bisect bad`. If the bug is not present, run `git bisect good`.
+5. Repeat steps 3 and 4 until you find the commit that introduced the bug.
+6. When Git has detected the error, it will provide a message that `SHA is the first bad commit.`
+7. Run `git bisect reset` to reset the repository to the original state.
+
+#### The short way
+
+1. Initiate the binary search.
+
+    ```bash
+    git bisect start <bad commit> <good commit>
+    ```
+
+2. `git bisect run <command>` - This command will run the command on each commit that is checked out by `git bisect`.
+   The command should return `0` if the bug is present and `1` if the bug is not present. This command will then
+   automatically find the commit that introduced the bug.
+
+3. `git bisect reset` - This command will reset the repository to the original state.
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+#### Tasks
+
+1. Create a new branch `<name>/bisect` and check it out.
+
+    ```bash,reveal
+    git checkout -b <name>/bisect main
+    ```
+
+2. It seems that the `fibonacci` function in `lib/fibonacci.py` is not working correctly. Find the commit that
+   introduced the bug.
+
+3. Fix the bug. You can use the `git bisect` command to find the commit that introduced the bug. Either use the long
+   way or the short way.
+
+   // TODO: hint
+   Hint: You can use the command `python3 -m unittest` to run the tests.
+
+4. Commit your changes.
+
+    ```bash,reveal
+    git add -A
+    git commit -m "Fix fibonacci function"
+    ```
+

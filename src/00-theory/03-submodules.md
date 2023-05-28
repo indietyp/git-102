@@ -61,8 +61,8 @@ git submodule update --init --recursive
 
 ### Setup
 
-Create a new repository `<name>-submodule` where `<name>` is your name. Add a file `README.md` with some text to the
-repository and commit the changes.
+Create a new local repository `<name>-submodule` where `<name>` is your name. Add a file `README.md` with some text to
+the repository and commit the changes.
 
 ### Tasks
 

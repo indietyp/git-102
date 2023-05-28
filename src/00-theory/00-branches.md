@@ -98,7 +98,7 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
    git push origin <name>/branches
    ```
 
-10. Wait for everyone to finish the 10th step
+10. Wait for everyone to get to this point
 
 11. Fetch the changes from the remote repository
 
