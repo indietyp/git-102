@@ -76,3 +76,8 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 
    (If you don't have a desk neighbour, or are doing this after the course, then you can assign me as the reviewer, my
    username is `bmahmoud`)
+
+## References
+
+- [Merge request](https://docs.gitlab.com/ee/user/project/merge_requests/)
+- [Pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
