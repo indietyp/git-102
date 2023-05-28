@@ -45,12 +45,12 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
    git push -u origin <name>/merge-request
    ```
 
-2. Copy the file `introduction/template.md` to a new file called `<name>.md` where `<name>` is your name, e.g.
+2. Copy the file `introductions/template.md` to a new file called `<name>.md` where `<name>` is your name, e.g.
    `alice.md`
 
    ```bash,reveal
-   cp introduction/template.md introduction/<name>.md
-   vi introduction/<name>.md
+   cp introductions/template.md introductions/<name>.md
+   vi introductions/<name>.md
    ```
 
 3. Fill in the template with some information about yourself. (If you don't want to share anything about yourself then
