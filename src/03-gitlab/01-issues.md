@@ -35,7 +35,8 @@ use-cases vary widely.
 
 ### Tasks
 
-1. Create a new issue in the repository, the title and purpose of the issue is up to you.
+1. Create a new issue in the [sandbox repository](https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git), the
+   title and purpose of the issue is up to you.
 
    Here are some ideas:
     * Create an issue to track your progress in this course
