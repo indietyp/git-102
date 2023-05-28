@@ -12,7 +12,8 @@ issue or a merge request. Thank you! :)
 
 ## Creating the book
 
-This book uses [mdBook](https://github.com/rust-lang/mdBook) to generate a static website from markdown files.
+This book uses [mdBook](https://github.com/rust-lang/mdBook) to generate a static website from markdown files. To run
+any of these commands you need to have [Rust](https://www.rust-lang.org/) installed.
 
 You can install all required dependencies with the following command:
 
