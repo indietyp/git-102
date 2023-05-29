@@ -1,6 +1,6 @@
 # Merging and Rebasing
 
-In the previous chapter [Demytifying Git](../00-theory/README.md) we learned about branches. In this chapter we will
+In the previous chapter [Demystifying Git](../00-theory) we learned about branches. In this chapter we will
 learn how to merge and rebase branches.
 
 Why do we need to merge and rebase branches? Well, we need to merge branches to combine the work of multiple people. In
