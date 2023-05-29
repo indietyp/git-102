@@ -16,7 +16,7 @@
   - [Stashing](./01-commands/04-stashing.md)
 - [Hooks](./02-hooks/README.md)
 - [GitLab](./03-gitlab/README.md)
-  - [Merge Request](./03-gitlab/00-merge-request.md)
+  - [Merge Requests](./03-gitlab/00-merge-request.md)
   - [Issues](./03-gitlab/01-issues.md)
   - [Forks](./03-gitlab/02-forks.md)
   - [Releases](./03-gitlab/03-releases.md)

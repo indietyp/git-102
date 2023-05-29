@@ -72,74 +72,79 @@ If you did not already, clone the repository for this course:
 git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 ```
 
-Create a new branch `<name>/tags` from the `main` branch, where `<name>` is your name. You can use the `git switch`.
-
-```bash
-git switch -c <name>/tags main
-```
+(Using the sandbox repository is optional, you can also use your own repository, in that case you do not need to create
+a new branch.)
 
 ### Tasks
 
-1. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file and push the
+1. Create a new branch `<name>/tags` from the `main` branch, where `<name>` is your name. You can use the `git switch`
+   command.
+
+   ```bash,reveal
+   git switch -c <name>/tags main
+   git push -u origin <name>/tags
+   ```
+
+2. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file and push the
    branch to the remote repository.
 
-2. How does the commit history look like?
+3. How does the commit history look like?
 
    ```bash,reveal
    git log --oneline --graph --all
    ```
 
-3. Create a new tag `<name>@v0.1.0` on the most recent commit.
+4. Create a new tag `<name>@v0.1.0` on the most recent commit.
 
    ```bash,reveal
    git tag <name>@v0.1.0
    ```
    
-4. How does the commit history look like now?
+5. How does the commit history look like now?
 
    ```bash,reveal
    git log --oneline --graph --all
    ```
    
-5. Modify the file `<name>.txt` and commit the changes.
+6. Modify the file `<name>.txt` and commit the changes.
 
-6. How does the commit history look like now?
+7. How does the commit history look like now?
 
    ```bash,reveal
    git log --oneline --graph --all
    ```
    
-7. Push your changes to the remote repository.
+8. Push your changes to the remote repository.
 
    ```bash,reveal
    git push origin <name>/tags
    ```
    
-8. How does the commit history look like now?
+9. How does the commit history look like now?
 
    ```bash,reveal
    git log --oneline --graph --all
    ```
    
-9. Inspect the remote repository on GitLab. How does the commit history look like? Do you spot something odd?
+10. Inspect the remote repository on GitLab. How does the commit history look like? Do you spot something odd?
 
-10. Tags are not pushed to the remote repository by default. Push the tag to the remote repository.
+11. Tags are not pushed to the remote repository by default. Push the tag to the remote repository.
 
     ```bash,reveal
     git push origin <name>@v0.1.0
     ```
     
-11. Inspect the remote repository on GitLab. How does the commit history look like now?
+12. Inspect the remote repository on GitLab. How does the commit history look like now?
 
-12. Wait for everyone to finish task 11.
+13. Wait for everyone to finish task 12.
 
-13. Fetch all changes from the remote repository.
+14. Fetch all changes from the remote repository.
 
     ```bash,reveal
     git fetch
     ```
     
-14. How does the commit history look like now?
+15. How does the commit history look like now?
 
     ```bash,reveal
     git log --oneline --graph --all
