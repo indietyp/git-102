@@ -6,8 +6,8 @@ There are a few commands that one can use to manipulate the git history. The mos
 * `git rebase`
 * [`git reset`](#git-reset)
 * [`git revert`](#git-revert)
-* `git cherry-pick`
-* `git squash`
+* [`git cherry-pick`](#git-cherry-pick)
+* [`git squash`](#git-squash)
 
 This chapter will not cover `git rebase` as it is already covered in
 the [Merging and Rebasing](../01-commands/02-merging-and-rebasing.md) chapter.
@@ -373,15 +373,19 @@ specified commit.
 git revert <commit-hash>
 ```
 
-Contrary to the `git reset` command, the `git revert` command does not change the commit history. Instead, it creates a
-new commit that undoes the specified commit. This means that the commit history will contain both the original commit
-and the revert commit. This means that the `git revert` command is safe to use on commits that have already been pushed
-to the remote repository.
-
 The common options for the `git revert` command are:
 
 - `--no-edit`: Do not open the editor to edit the commit message.
 - `--no-commit`: Do not create a new commit. Instead, add the changes to the staging area.
+
+```admonish note
+
+Contrary to the `git reset` command, the `git revert` command does not change the commit history. Instead, it creates a
+new commit that undoes the specified commit. This means that the commit history will contain both the original commit
+and the revert commit. Therefore the `git revert` command is safe to use on commits that have already been pushed to the
+remote repository.
+
+```
 
 ### Exercise
 
@@ -444,3 +448,224 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
    ```bash,reveal
     git push origin <name>/revert
     ```
+
+## `git cherry-pick`
+
+The `git cherry-pick` command can be used to apply a commit from another branch to the current branch. This means that a
+new commit will be created that contains the changes of the specified commit.
+
+```bash
+git cherry-pick <commit-hash>
+```
+
+The common options for the `git cherry-pick` command are:
+
+* `--no-commit`: Do not create a new commit. Instead, add the changes to the staging area.
+
+```admonish note
+
+`cherry-pick` does not change the commit history. Instead, it creates a new commit that contains the changes of the
+specified commit, like `git revert` it is safe to use on commits that have already been pushed to the remote repository.
+
+```
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+#### Tasks
+
+This is a group exercise. You can work together with your neighbour.
+
+1. Create a new branch `<name>/cherry-pick` from the `main` branch, where `<name>` is your name. You can use the `git
+   switch` command.
+
+   ```bash,reveal
+   git switch -c <name>/cherry-pick main
+   git push -u origin <name>/cherry-pick
+   ```
+
+2. You know the drill, create a new file `<name>.txt` and add it to the staging area.
+
+   ```bash,reveal
+   echo "<name>" > <name>.txt
+   git add <name>.txt
+   ```
+
+3. Commit and push the changes with the message "add <name>.txt".
+
+   ```bash,reveal
+   git commit -m "add <name>.txt"
+   git push origin <name>/cherry-pick
+   ```
+
+4. Wait for your neighbour to push their changes.
+
+5. Fetch the changes from the remote repository.
+
+   ```bash,reveal
+   git fetch
+   ```
+
+6. Locate the commit hash of the commit that added the `<name>.txt` file. You can use the `git log` command.
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+   (Hint: The commit hash should be the same as the one in your neighbour's branch.)
+
+7. Cherry-pick the commit that added the `<name>.txt` file of your neighbour. Use the `git cherry-pick` command.
+
+   ```bash,reveal
+   git cherry-pick <commit-hash>
+   ```
+
+8. How does the commit history look like now?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+9. Confirm that the `<name>.txt` file of your neighbour is present.
+
+   ```bash,reveal
+   ls
+   ```
+
+10. Push the changes to the remote repository.
+
+    ```bash,reveal
+    git push origin <name>/cherry-pick
+    ```
+
+## `git squash`
+
+`git squash` is more of a concept than a command and describes the process of combining multiple commits into a single
+commit, there are multiple ways to achieve a squash.
+
+1. `git reset` and `git commit`
+2. `git rebase`
+3. `git merge --squash`
+
+### `git reset` and `git commit`
+
+Using a combination of the `git reset` and `git commit` commands, it is possible to combine multiple commits into a
+single commit.
+
+```bash
+git reset --soft <commit-hash>
+git commit
+```
+
+Remember from [`git reset`](#git-reset) that the `--soft` option of the `git reset` command will reset the HEAD to the
+specified commit, but will keep the changes in the staging area. We can then create a new commit that contains the
+staged changes.
+
+### `git rebase`
+
+The `git rebase` command can be used to rewrite the commit history of a branch. This means that the commits of a branch
+can be changed, for example by combining multiple commits into a single commit.
+
+```bash
+git rebase -i <commit-hash>
+# -i stands for interactive
+```
+
+The `git rebase` command will open an editor with a list of commits that will be rebased. The commits can be reordered
+or combined by changing the order of the commits or by combining multiple commits into a single commit.
+
+The commands for an interactive rebase are outlined in the editor, but we will go into more detail in the next section.
+
+### `git merge --squash`
+
+This command is particularly popular in repositories that prefer a clean commit history, these repositories often squash
+all commits of a single merge request into a single commit before merging the merge request.
+
+```bash
+git merge --squash <branch-name>
+```
+
+(It essentially combines `git merge`, `git reset` and `git commit` commands.)
+
+### Exercise
+
+In this exercise, we will only use the `git reset` and `git commit` commands to squash commits.
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+(Using the sandbox repository is optional, you can also use your own repository, in that case you do not need to create
+a new branch.)
+
+#### Tasks
+
+1. Create a new branch `<name>/squash` from the `main` branch, where `<name>` is your name. You can use the `git switch`
+   command.
+
+   ```bash,reveal
+   git switch -c <name>/squash main
+   git push -u origin <name>/squash
+   ```
+
+2. You know the drill, create a new file `<name>.txt` and commit it.
+
+   ```bash,reveal
+   echo "<name>" > <name>.txt
+   git add <name>.txt
+   git commit -m "add <name>.txt"
+   ```
+
+3. Modify the `<name>.txt` file and commit it.
+
+   ```bash,reveal
+   echo "<name> <name>" > <name>.txt
+   git add <name>.txt
+   git commit -m "modify <name>.txt"
+   ```
+
+4. How does the commit history look like?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+5. Squash the last two commits into a single commit. Use the `git squash` command.
+
+   ```bash,reveal
+   git reset --soft HEAD~2
+   git commit 
+   ```
+
+6. How does the commit history look like now?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+7. Push the changes to the remote repository.
+
+   ```bash,reveal
+   git push origin <name>/squash
+   ```
+
+8. (Optional): What would happen if you squash to commits that have already been pushed to the remote repository?
+   (Click to reveal)
+
+   <div class="reveal no-hover">
+
+   In that case the remote repository would reject the push, because the commit history would be different,
+   like `git reset` you would have to force push the changes.
+
+   </div>
