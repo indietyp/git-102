@@ -8,7 +8,7 @@ Many Git hosting providers such as GitLab and GitHub support LFS. This means tha
 Git hosting provider's servers.
 
 This is important, because Git is not designed to handle large files. Remember back
-to [Demystifying Git](../00-theory/README.md)
+to [Demystifying Git](../00-theory)
 where we talked about how Git stores the entire history of your project. This means that if you have a 1GB file in your
 repository then every time you clone the repository you will download the entire history of the project, including the
 1GB file. This is not ideal. Especially if you have many large data files in your repository. Once tracked by Git, they

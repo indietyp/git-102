@@ -8,7 +8,7 @@ Imagine git being your toilet, you sit and use the porcelain every-day, but you 
 works.
 
 Plumbing commands are usually used by git developers, but sometimes they can be useful for us too. We used them in
-the [Demystifying Git](../00-theory/README.md) section to understand how git works internally. Plumbing commands predate
+the [Demystifying Git](../00-theory) section to understand how git works internally. Plumbing commands predate
 porcelain commands, as git was first built as a set of shell scripts instead of a fully fledged user-friendly
 application.
 
@@ -96,11 +96,11 @@ The following commands are considered porcelain commands:
 * :school_satchel: [`git status`](https://git-scm.com/docs/git-status) - Show the working tree status
     * Covered in `Git 101` course
 * :white_check_mark: [`git submodule`](../00-theory/03-submodules.md) - Initialize, update or inspect submodules
-    * Covered in [`Demystifying Git`](../00-theory/README.md).
+    * Covered in [`Demystifying Git`](../00-theory).
 * :school_satchel: `git switch` - Switch branches
     * Covered in `Git 101` course
 * :white_check_mark: [`git tag`](../00-theory/01-tags.md) - Create, list, delete or verify a tag object signed with GPG
-    * Covered in [`Demystifying Git`](../00-theory/README.md).
+    * Covered in [`Demystifying Git`](../00-theory).
 * :question: [`git worktree`](https://git-scm.com/docs/git-worktree) - Manage multiple working trees
     * Not covered in this course, as it is a niche command
 
@@ -115,6 +115,6 @@ Snippet of auxiliary commands:
 * :white_check_mark: [`git reflog`](https://git-scm.com/docs/git-reflog) - Manage reflog information
     * Covered in this course as part of the `git reset` command
 * :white_check_mark: [`git remote`](../00-theory/04-multiple-remotes.md) - Manage set of tracked repositories
-    * Covered in [`Demystifying Git`](../00-theory/README.md).
+    * Covered in [`Demystifying Git`](../00-theory).
 * :white_check_mark: [`git blame`]() - Show what revision and author last modified each line of a file
     * Covered in this course
