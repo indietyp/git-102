@@ -1,6 +1,10 @@
+default:
+  tags:
+    - docker
+
 generate-book:
   stage: build
-  image: rust:1.69
+  image: rust:latest
 
   script:
     - cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
