@@ -26,3 +26,4 @@
   - [LFS](./04-extra/02-lfs.md)
   - [.gitignore](./04-extra/03-gitignore.md)
 - [Glossary](./glossary.md)
+- [Help](./help.md)
