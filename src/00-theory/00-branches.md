@@ -187,8 +187,8 @@ Once you have developed your features/requirements you likely want to merge thes
 the concept of **merging** comes into play. Conceptually merging takes the state of the target branch and the current
 branch and merges them together, changes of the target branch are applied to the current branch, resulting in a new
 commit, unifying both branches, if both branches touched the same section of code conflict resolution must take place,
-the chapter [merge](../01-actions/01-merge.md) goes into greater detail, but of the time these can be applied
-automatically.
+the chapter [merge](../01-commands/02-merging-and-rebasing.md) goes into greater detail, but of the time these can be
+applied automatically.
 
 ## Trivia
 

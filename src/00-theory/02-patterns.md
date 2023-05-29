@@ -2,7 +2,7 @@
 
 There are many different patterns for git repositories, this section will describe some of them.
 
-Branch patterns have already been discussed in the [branching section](./01-branches.md), so this section will focus on
+Branch patterns have already been discussed in the [branching section](./00-branches.md), so this section will focus on
 other patterns.
 
 ## Monorepo
