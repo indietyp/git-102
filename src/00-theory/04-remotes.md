@@ -1,7 +1,8 @@
 # Remotes
 
 Remotes are repositories that are not on your local machine. You can use remotes to push your changes to a remote server
-or to pull changes from a remote server. You can also use remotes to share your changes with other users
+or to pull changes from a remote server. This enables you to collaborate with other people on the same project, as well
+as save your changes in a safe place.
 
 ## Multiple remotes
 
