@@ -16,13 +16,16 @@ There are two types of remotes, http and ssh. HTTP remotes are easier to set up,
 are more secure, but they are harder to set up. In this tutorial we will use http remotes due to their ease of use and
 setup.
 
-> **Note:** HTTP remotes are slowly being phased out in favor of SSH remotes. If you want to use SSH remotes, you can
-> find a
-> guide [here for GitHub](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
-> and [here for GitLab](https://docs.gitlab.com/ee/ssh/).
->
-> If you are attending in person and you want to use SSH remotes, please let the instructor know in one of the breaks (
-> or after the course) and we will help you set it up.
+```admonish note 
+
+HTTP remotes are slowly being phased out in favor of SSH remotes. If you want to use SSH remotes, you can
+find a guide [here for GitHub](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+and [here for GitLab](https://docs.gitlab.com/ee/ssh/).
+
+If you are attending in person and you want to use SSH remotes, please let the instructor know in one of the breaks (
+or after the course) and we will help you set it up.
+
+```
 
 ## Adding a remote
 
