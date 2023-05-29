@@ -4,7 +4,7 @@ There are a few commands that one can use to manipulate the git history. The mos
 
 * [`git commit --amend`](#git-commit---amend)
 * `git rebase`
-* `git reset`
+* [`git reset`](#git-reset)
 * `git revert`
 * `git cherry-pick`
 * `git squash`
@@ -26,13 +26,14 @@ This will overwrite the history of the remote repository. This can cause a wide 
 
 ## `git commit --amend`
 
-The `git commit --amend` command can be used to change the last commit. It can be used to:
+The `git commit --amend` command can be used to change the last commit. This includes:
 
 * Change the commit message
 * Add (or remove) files to the last commit
 * Change the content of files in the last commit
 
 Common options for the `git commit --amend` command are:
+
 * `-m <message>`: Change the commit message
 * `--no-edit`: Do not change the commit message
 * `--allow-empty`: Allow an empty commit
@@ -152,3 +153,212 @@ a new branch.)
     > **Note:** The `--force-with-lease` option is a safer alternative to the `--force` option. It will only overwrite
     the remote branch if the remote branch is in the same state as the local branch. This prevents you from overwriting
     changes that were made by someone else.
+
+## `git reset`
+
+The `git reset` command can be used to reset the current branch to a previous commit.
+
+There are three different modes for the `git reset` command:
+
+* `--soft`: All the changes that were made in the commits between the current commit and the specified commit are
+  preserved in the staging area. The branch pointer (HEAD) is reset to the specified commit.
+* `--mixed`: All the changes that were made in the commits between the current commit and the specified commit are
+  preserved in the working directory (**not** the staging area). The index and the branch pointer (HEAD) are reset to
+  the specified commit.
+* `--hard`: All the changes that were made in the commits between the current commit and the specified commit are
+  discarded. The index, the working directory and the branch pointer (HEAD) are reset to the specified commit.
+
+```admonish danger
+
+`git reset --hard` will discard all changes that were made in the commits between the current commit and the specified 
+commit. This carries the risk of losing data. Use with caution. It should only be used if you know what you are doing
+and you know 100% that you do not need the changes anymore.
+
+(In some cases the `reflog` command can be used to recover lost commits. However, this is not always possible.)
+
+```
+
+### `git reflog`
+
+The `git reflog` command can be used to show the history of the `HEAD` pointer. This includes all the commits that were
+made in the current branch.
+
+```bash
+git reflog
+```
+
+This also includes commits that were discarded by the `git reset` command, the `git commit --amend` command and
+the `git rebase` command.
+
+Unlike actual commits, the reflog entries will be deleted after a certain amount of time. The default time is 90 days.
+This means that if you want to recover a commit that was discarded more than 90 days ago, it might not be possible.
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+(Using the sandbox repository is optional, you can also use your own repository, in that case you do not need to create
+a new branch.)
+
+#### Tasks
+
+1. Create a new branch `<name>/reset` from the `main` branch, where `<name>` is your name. You can use the `git switch`
+   command.
+
+   ```bash,reveal
+   git switch -c <name>/reset main
+   git push -u origin <name>/reset
+   ```
+
+2. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file with the message
+   "add &lt;name>.txt".
+
+   ```bash,reveal
+   echo "Hello World" > <name>.txt
+   git add <name>.txt
+   git commit -m "add <name>.txt"
+   ```
+
+3. How does the commit history look like?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+4. You want to reset the branch to the previous commit. Use the `git reset` command to reset the branch to the previous
+   commit. Use the `--soft` option.
+
+   ```bash,reveal
+   git reset --soft HEAD~1
+   ```
+
+   > **Note:** The `HEAD~1` argument means the commit before the current commit. You can also use the commit hash of the
+   last commit.
+
+5. How does the commit history look like now?
+
+   ```bash,reveal
+    git log --oneline --graph --all
+    ```
+
+6. How does the staging area look like now?
+
+   ```bash,reveal
+   git status
+   ```
+
+7. How does the working directory look like now?
+
+   ```bash,reveal
+   ls
+   ```
+
+8. Rollback to step 2, by creating a new commit with the message "add &lt;name>.txt".
+
+   ```bash,reveal
+   git commit -m "add <name>.txt"
+   # as you can see, we do not need to add the file again, because it is already in the staging area (due to the --soft option)
+   ```
+
+9. Verify that the commit history is the same as in step 2.
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+10. Use the `git reset` command to reset the branch to the previous commit. Use the `--mixed` option.
+
+    ```bash,reveal
+    git reset --mixed HEAD~1
+    ```
+
+11. How does the commit history look like now?
+
+    ```bash,reveal
+    git log --oneline --graph --all
+    ```
+
+12. How does the staging area look like now?
+
+    ```bash,reveal
+    git status
+    ```
+
+13. How does the working directory look like now?
+
+    ```bash,reveal
+    ls
+    ```
+
+14. Rollback to step 2, by creating a new commit with the message "add &lt;name>.txt".
+
+    ```bash,reveal
+    git add <name>.txt
+    git commit -m "add <name>.txt"
+    # as you can see we need to add the file again, because it is not in the staging area anymore (due to the --mixed option)
+    ```
+
+15. Verify that the commit history is the same as in step 2.
+
+    ```bash,reveal
+    git log --oneline --graph --all
+    ```
+
+16. Use the `git reset` command to reset the branch to the previous commit. Use the `--hard` option.
+
+    ```bash,reveal
+    git reset --hard HEAD~1
+    ```
+
+17. How does the commit history look like now?
+
+    ```bash,reveal
+    git log --oneline --graph --all
+    ```
+
+18. How does the staging area look like now?
+
+    ```bash,reveal
+    git status
+    ```
+
+19. How does the working directory look like now?
+
+    ```bash,reveal
+    ls
+    ```
+
+    As you can see, the file `<name>.txt` is gone. This is because the `--hard` option was used. The `--hard` option
+    will reset the working directory to the state of the specified commit.
+
+20. (Optional) Recover the file `<name>.txt` by using the `git reflog` command.
+
+    ```bash,reveal
+    git reflog
+    git restore --source <commit-hash> <name>.txt
+    ```
+
+    > **Note:** The `git restore` command can be used to restore files from a previous commit. The `<commit-hash>` is
+    the hash of the commit where the file was still present. (You can also use the `HEAD@{<number>}` syntax to specify a
+    commit instead of the commit hash. `<number>` is the number of the commit in the reflog.)
+
+21. Ensure that the file `<name>.txt` is present again.
+
+    ```bash,reveal
+    ls
+    ```
+    
+22. Push the changes to the remote repository.
+
+    ```bash,reveal
+    git add <name>.txt
+    git commit -m "add <name>.txt"
+    git push origin <name>/reset
+    ```
+    
