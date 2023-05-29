@@ -263,7 +263,8 @@ a new branch.)
 
    ```bash,reveal
    git commit -m "add <name>.txt"
-   # as you can see, we do not need to add the file again, because it is already in the staging area (due to the --soft option)
+   # as you can see, we do not need to add the file again, 
+   # because it is already in the staging area (due to the --soft option)
    ```
 
 9. Verify that the commit history is the same as in step 2.
@@ -301,7 +302,8 @@ a new branch.)
     ```bash,reveal
     git add <name>.txt
     git commit -m "add <name>.txt"
-    # as you can see we need to add the file again, because it is not in the staging area anymore (due to the --mixed option)
+    # as you can see we need to add the file again,
+    # because it is not in the staging area anymore (due to the --mixed option)
     ```
 
 15. Verify that the commit history is the same as in step 2.
@@ -353,7 +355,7 @@ a new branch.)
     ```bash,reveal
     ls
     ```
-    
+
 22. Push the changes to the remote repository.
 
     ```bash,reveal
@@ -361,4 +363,83 @@ a new branch.)
     git commit -m "add <name>.txt"
     git push origin <name>/reset
     ```
-    
+
+## `git revert`
+
+The `git revert` command can be used to revert a commit. This means that a new commit will be created that undoes the
+specified commit.
+
+```bash
+git revert <commit-hash>
+```
+
+Contrary to the `git reset` command, the `git revert` command does not change the commit history. Instead, it creates a
+new commit that undoes the specified commit. This means that the commit history will contain both the original commit
+and the revert commit.
+
+The common options for the `git revert` command are:
+
+- `--no-edit`: Do not open the editor to edit the commit message.
+- `--no-commit`: Do not create a new commit. Instead, add the changes to the staging area.
+
+### Exercise
+
+#### Setup
+
+If you haven't already, clone the repository from GitLab and go into the repository directory.
+
+```bash
+git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
+```
+
+#### Tasks
+
+1. Create a new branch `<name>/revert` from the `main` branch, where `<name>` is your name. You can use the `git switch`
+   command.
+
+   ```bash,reveal
+   git switch -c <name>/revert main
+   git push -u origin <name>/revert
+   ```
+   
+2. Locate the commit hash of the commit that added the `markdown.md` file. You can use the `git log` command.
+
+   ```bash,reveal
+   git log --oneline
+   ```
+   
+3. Revert the commit that added the `markdown.md` file. Use the `git revert` command.
+
+   ```bash,reveal
+    git revert <commit-hash>
+    ```
+   
+4. How does the commit history look like now?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+   
+5. How does the staging area look like now?
+
+   ```bash,reveal
+   git status
+   ```
+   
+6. How does the working directory look like now?
+
+   ```bash,reveal
+   ls
+   ```
+   
+7. (Optional) Revert the revert commit.
+
+   ```bash,reveal
+   git revert HEAD
+   ```
+   
+8. Push the changes to the remote repository.
+
+   ```bash,reveal
+    git push origin <name>/revert
+    ```
