@@ -1,18 +1,37 @@
+image: rust:latest
+
 default:
   tags:
     - docker
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+
+before_script:
+  - cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
+
 pages:
   stage: deploy
-  image: rust:latest
 
   script:
-    - cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
     - mdbook build -d public
 
   artifacts:
     paths:
       - public
 
-  only:
-    - main
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+test:
+  stage: test
+
+  script:
+    - mdbook build
+
+  rules:
+    - if: $CI_COMMIT_BRANCH != "main"
+
+# TODO: cache dependencies https://stackoverflow.com/a/74888341/9077988
