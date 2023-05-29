@@ -5,7 +5,7 @@ There are a few commands that one can use to manipulate the git history. The mos
 * [`git commit --amend`](#git-commit---amend)
 * `git rebase`
 * [`git reset`](#git-reset)
-* `git revert`
+* [`git revert`](#git-revert)
 * `git cherry-pick`
 * `git squash`
 
@@ -375,7 +375,8 @@ git revert <commit-hash>
 
 Contrary to the `git reset` command, the `git revert` command does not change the commit history. Instead, it creates a
 new commit that undoes the specified commit. This means that the commit history will contain both the original commit
-and the revert commit.
+and the revert commit. This means that the `git revert` command is safe to use on commits that have already been pushed
+to the remote repository.
 
 The common options for the `git revert` command are:
 
@@ -401,43 +402,43 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
    git switch -c <name>/revert main
    git push -u origin <name>/revert
    ```
-   
+
 2. Locate the commit hash of the commit that added the `markdown.md` file. You can use the `git log` command.
 
    ```bash,reveal
    git log --oneline
    ```
-   
+
 3. Revert the commit that added the `markdown.md` file. Use the `git revert` command.
 
    ```bash,reveal
     git revert <commit-hash>
     ```
-   
+
 4. How does the commit history look like now?
 
    ```bash,reveal
    git log --oneline --graph --all
    ```
-   
+
 5. How does the staging area look like now?
 
    ```bash,reveal
    git status
    ```
-   
+
 6. How does the working directory look like now?
 
    ```bash,reveal
    ls
    ```
-   
+
 7. (Optional) Revert the revert commit.
 
    ```bash,reveal
    git revert HEAD
    ```
-   
+
 8. Push the changes to the remote repository.
 
    ```bash,reveal
