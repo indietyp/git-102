@@ -1,6 +1,6 @@
 generate-book:
   stage: build
-  image: rust:latest
+  image: rust:1.69
 
   script:
     - cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
