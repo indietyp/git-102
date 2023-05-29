@@ -24,4 +24,5 @@
   - [Software Licensing](./04-extra/00-software-license.md)
   - [Binary File Support](./04-extra/01-binary.md)
   - [LFS](./04-extra/02-lfs.md)
+  - [.gitignore](./04-extra/03-gitignore.md)
 - [Glossary](./glossary.md)

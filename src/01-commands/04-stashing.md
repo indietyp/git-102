@@ -173,3 +173,9 @@ a new branch.)
     ```
    
 17. Wait for your group members to finish the previous steps.
+
+
+## Resources
+
+- [Git Stash](https://git-scm.com/docs/git-stash)
+- [Git Stash Tutorial](https://www.atlassian.com/git/tutorials/saving-changes/git-stash)

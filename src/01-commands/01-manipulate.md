@@ -669,3 +669,16 @@ a new branch.)
    like `git reset` you would have to force push the changes.
 
    </div>
+
+
+## Resources
+
+- [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick)
+- [`git merge --squash`](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---squash)
+- [`git revert`](https://git-scm.com/docs/git-revert)
+- [`git reset`](https://git-scm.com/docs/git-reset)
+- [Git: Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
+- [Atlassian: Git Cherry-pick](https://www.atlassian.com/git/tutorials/cherry-pick)
+- [Atlassian: Git Reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
+- [Atlassian: Git Revert](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert)
+- [Tower: Squash](https://www.git-tower.com/learn/git/faq/git-squash)

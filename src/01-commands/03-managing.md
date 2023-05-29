@@ -22,6 +22,7 @@ are:
   want to remove all files except for a few.
 * `-X` or `--exclude-from`: This option tells Git to exclude files that match a pattern from a file. This can be useful
   if you want to remove all files except for a few.
+* `-i` or `--interactive`: This option tells Git to ask for confirmation before removing files.
 
 ### Exercise
 
@@ -65,7 +66,8 @@ a new branch.)
 5. Run `git clean`
 
    ```bash,reveal
-   git clean
+   git clean -i
+   # you can also use `git clean -f` to remove the files without asking for confirmation
    ```
 
 6. Check if the file `scratch.txt` is still there.
@@ -103,3 +105,9 @@ git config gc.reflogExpireUnreachable never
 
 An exercise for recovering a commit from the `git reflog` history is included in
 the [`git reset`](./01-manipulate.md#git-reset).
+
+
+## Resources
+
+* [Git documentation: `git clean`](https://git-scm.com/docs/git-clean)
+* [Git documentation: `git reflog`](https://git-scm.com/docs/git-reflog)
