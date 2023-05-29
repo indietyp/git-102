@@ -61,8 +61,7 @@ a new branch.)
    ```
 
 2. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file with the
-   message "add
-   &lt;name>.txt" and push the branch to the remote repository.
+   message "add &lt;name>.txt".
 
    ```bash,reveal
    echo "Hello World" > <name>.txt
@@ -96,8 +95,7 @@ a new branch.)
    ```
 
 7. You forgot to add your name to the file. Add your name to the file and commit the changes. Use
-   the `git commit --amend`
-   command.
+   the `git commit --amend` command.
 
    ```bash,reveal
    echo "My name is <name>" >> <name>.txt
