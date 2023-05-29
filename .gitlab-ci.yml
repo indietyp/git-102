@@ -16,7 +16,8 @@ pages:
   stage: deploy
 
   script:
-    - mdbook build -d public
+    - mdbook build
+    - mv book/html public
 
   artifacts:
     paths:
