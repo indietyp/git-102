@@ -35,7 +35,7 @@ mdbook serve
 
 ## License
 
-This book is licensed under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
+This book is licensed under the [CC0 1.0 Universal](LICENSE-CC0.md) license.
 
 > This means you can do with it whatever you want. You don't even have to give attribution. Although, I would appreciate
 > it if you did. :)
@@ -43,4 +43,5 @@ This book is licensed under the [CC0 1.0 Universal](https://creativecommons.org/
 > This does not mean this work is given into the public domain. (Although, I would like that.) This is because it isn't
 > possible to attribute something to the public domain in some jurisdictions. (e.g. Germany)
 
-All software in this repository is dual-licensed under the MIT and Apache 2.0 licenses.
+All software in this repository is dual-licensed under the [MIT](LICENSE-MIT.md) and [Apache 2.0](LICENSE-APACHE.md)
+licenses.
