@@ -3,7 +3,7 @@ default:
     - docker
 
 pages:
-  stage: build
+  stage: deploy
   image: rust:latest
 
   script:
