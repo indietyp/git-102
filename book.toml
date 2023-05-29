@@ -12,12 +12,12 @@ command = "mdbook-mermaid"
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
-assets_version = "2.0.0" # do not edit: managed by `mdbook-admonish install`
+assets_version = "2.0.1" # do not edit: managed by `mdbook-admonish install`
 
 [preprocessor.emojicodes]
 
 [output]
 
 [output.html]
-additional-js = ["mermaid.min.js", "mermaid-init.js", "tabbed-code-blocks.js", "js/reveal.js"]
-additional-css = ["././mdbook-admonish.css", "tabbed-code-blocks.css", "css/reveal.css"]
+additional-js = ["./js/mermaid.min.js", "./js/mermaid-init.js", "./js/tabbed-code-blocks.js", "./js/reveal.js"]
+additional-css = ["./css/mdbook-admonish.css", "./css/tabbed-code-blocks.css", "./css/reveal.css"]
