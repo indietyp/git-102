@@ -327,6 +327,18 @@ to resolve them in each commit.
 
 There are multiple ways to rebase, but we will only look at interactive rebasing.
 
+```admonish danger
+
+When you use rebase (even for merging), you are rewriting history. This means that you should never rebase commits that
+have been pushed to a remote repository. If you do, you will have to force push, which will overwrite the history of the
+remote repository. You need to be very careful when doing this, because you can easily lose commits if you do this wrong.
+
+To prevent this, you can use the `--force-with-lease` flag, which will only allow you to force push if the remote branch 
+is the same as the local branch. This will prevent you from overwriting commits that have been pushed by someone else. 
+Still, you should be cautious and only force push if you are sure that you are not overwriting any commits.
+
+```
+
 ### Interactive Rebasing
 
 Interactive rebasing is a way of rebasing where you can choose which commits to keep, which commits to squash and which
@@ -542,3 +554,13 @@ preference for all repositories. You can also pass --rebase, --no-rebase,
 or --ff-only on the command line to override the configured default per
 invocation.
 ```
+
+## Resources
+
+- [Git - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+- [Git - Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+- [Git - Pulling](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches#_pulling)
+- [GitHub - Rebasing](https://docs.github.com/en/github/using-git/about-git-rebase)
+- [GitHub - Merging](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges)
+- [GitLab - Rebasing](https://docs.gitlab.com/ee/topics/git/git_rebase.html)
+- [GitLab - Merging](https://docs.gitlab.com/ee/topics/gitlab_flow.html#merge-requests)
