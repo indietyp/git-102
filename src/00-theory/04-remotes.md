@@ -1,4 +1,9 @@
-# Multiple Remotes
+# Remotes
+
+Remotes are repositories that are not on your local machine. You can use remotes to push your changes to a remote server
+or to pull changes from a remote server. You can also use remotes to share your changes with other users
+
+## Multiple remotes
 
 You can add multiple remotes to a repository. This is useful if you want to push your changes to multiple remote
 repositories. You can also use this to pull changes from multiple remote repositories. This is especially useful when
@@ -57,6 +62,13 @@ If you haven't already, clone the repository from GitLab and go into the reposit
 git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
 ```
 
+Because we cloned the repository from GitLab, the remote repository is already added to our local repository. You can
+see this with the `git remote` command.
+
+```bash,reveal
+git remote
+```
+
 ### Tasks
 
 1. Create a new branch `<name>/multiple-remotes` and push the branch to the remote repository.
@@ -66,15 +78,22 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
     git push -u origin <name>/multiple-remotes
     ```
 
-2. Fork the repository `git-102-sandbox` on GitLab. Add the fork as a remote to your repository. The name of the remote
-   should be `fork`. Push your changes to the fork.
+2. Fork the repository `git-102-sandbox` on GitLab. For more information on how to fork a repository, see
+   the [chapter on GitLab forks](../03-gitlab/02-forks.md). Add the fork as a remote to your repository. The name of the
+   remote should be `fork`. Push your changes to the fork.
 
     ```bash,reveal
     git remote add fork <url>
     git push fork main
     ```
 
-3. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file and push the
+3. List all remotes. How many remotes are there? What are the names of the remotes?
+
+    ```bash,reveal
+    git remote
+    ```
+
+4. Create a new file `<name>.txt` where `<name>` is your name and add some text to it. Commit the file and push the
    branch to the remote repository.
 
     ```bash,reveal
@@ -82,19 +101,37 @@ git clone https://git.mpi-cbg.de/scicomp/teaching/git-102-sandbox.git
     git commit -m "Add <name>.txt"
     git push
     ```
-   
-4. Look at the commit history of your local repository. How does the commit history look like?
-5. Look at the commit history in our sandbox repository on GitLab. How does the commit history look like? Did you push
-   the changes to the sandbox repository?
-6. Look at your fork on GitLab. How does the commit history look like? Did you push the changes to the fork? 
 
-7. Push your changes to the `fork` remote.
+5. Look at the commit history of your local repository. How does the commit history look like?
+
+   ```bash,reveal
+   git log --oneline --graph --all
+   ```
+
+6. Look at the commit history in our sandbox repository on GitLab. How does the commit history look like? Did you push
+   the changes to the sandbox repository?
+
+7. Look at your fork on GitLab. How does the commit history look like? Did you push the changes to the fork?
+
+8. Push your changes to the `fork` remote.
 
     ```bash,reveal
     git push fork <name>/multiple-remotes
     ```
 
-8. Look at the commit history of your fork on GitLab. Did something change?
+9. Look at the commit history of your fork on GitLab. Did something change?
+
+10. Remove the `fork` remote.
+
+    ```bash,reveal
+    git remote remove fork
+    ```
+
+11. List all remotes. How many remotes are there? What are the names of the remotes?
+
+    ```bash,reveal
+    git remote
+    ```
 
 ## Resources
 

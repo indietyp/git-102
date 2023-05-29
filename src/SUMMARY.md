@@ -7,7 +7,7 @@
   - [Tags](./00-theory/01-tags.md)
   - [Patterns](./00-theory/02-patterns.md)
   - [Submodules](./00-theory/03-submodules.md)
-  - [Multiple Remotes](./00-theory/04-multiple-remotes.md)
+  - [Remotes](./00-theory/04-remotes.md)
 - [Commands](./01-commands/README.md)
   - [Investigating the Repository](./01-commands/00-investigate.md)
   - [Manipulating the Git History](./01-commands/01-manipulate.md)

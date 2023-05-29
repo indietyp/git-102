@@ -114,7 +114,7 @@ Snippet of auxiliary commands:
     * Covered in `Git 101` course
 * :white_check_mark: [`git reflog`](https://git-scm.com/docs/git-reflog) - Manage reflog information
     * Covered in this course as part of the `git reset` command
-* :white_check_mark: [`git remote`](../00-theory/04-multiple-remotes.md) - Manage set of tracked repositories
+* :white_check_mark: [`git remote`](../00-theory/04-remotes.md) - Manage set of tracked repositories
     * Covered in [`Demystifying Git`](../00-theory).
 * :white_check_mark: [`git blame`]() - Show what revision and author last modified each line of a file
     * Covered in this course
