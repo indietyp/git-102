@@ -10,6 +10,20 @@ You can add multiple remotes to a repository. This is useful if you want to push
 repositories. You can also use this to pull changes from multiple remote repositories. This is especially useful when
 you fork a repository and want to pull changes from the original repository.
 
+## Types of remotes
+
+There are two types of remotes, http and ssh. HTTP remotes are easier to set up, but they are less secure. SSH remotes
+are more secure, but they are harder to set up. In this tutorial we will use http remotes due to their ease of use and
+setup.
+
+> **Note:** HTTP remotes are slowly being phased out in favor of SSH remotes. If you want to use SSH remotes, you can
+> find a
+> guide [here for GitHub](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+> and [here for GitLab](https://docs.gitlab.com/ee/ssh/).
+>
+> If you are attending in person and you want to use SSH remotes, please let the instructor know in one of the breaks (
+> or after the course) and we will help you set it up.
+
 ## Adding a remote
 
 You can add a remote with the `git remote add` command. The command takes two arguments, the name of the remote and the
