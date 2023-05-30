@@ -17,7 +17,7 @@ cache:
 
 before_script:
   - export PATH="$PATH:$CARGO_HOME/bin"
-  - cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
+  - mdbook --version || cargo install mdbook mdbook-linkcheck mdbook-mermaid mdbook-emojicodes mdbook-admonish
 
 pages:
   stage: deploy
