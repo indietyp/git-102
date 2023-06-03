@@ -1,0 +1,34 @@
+name: github pages
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+
+      - name: Install tools
+        uses: taiki-e/install-action@v2
+        with:
+          tool: mdbook,mdbook-linkcheck,mdbook-mermaid,mdbook-emojicodes,mdbook-admonish
+
+      - name: Build
+        run: mdbook build
+
+      # only deploy if on main branch
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
