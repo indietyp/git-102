@@ -85,6 +85,17 @@ Create a file `test2.txt` with the contents `Hello World!`.
 5. What is the output of `git ls-files -s test2.txt`?
 ```
 
+### Trivia
+
+* To avoid duplication across revisions, git uses a technique called packfiles. Packfiles are compressed files that
+  contain multiple objects. Git will automatically pack objects if they are not accessed frequently. You can manually
+  pack objects using `git gc --aggressive --prune=now`. This saves space but makes it slower to access objects.
+* Packfiles employ delta compression to save space. This means that if you have two files that are similar, git will
+  store the differences between the two files instead of storing the files twice. This is useful for storing multiple
+  revisions of a file.
+* Blobs always contain the full contents of the file, regardless of what has changed. This is because git does not
+  store the differences between two blobs, but the full contents of the file.
+
 ## What is a tree?
 
 A tree is a directory in the repository. It is stored as a compressed object in the `.git/objects` directory. The name
